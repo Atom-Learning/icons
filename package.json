@@ -9,8 +9,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "NODE_ENV=production node --no-warnings --experimental-json-modules ./scripts/build-export.mjs",
-    "prepublishOnly": "clean build",
-    "clean": "del ./dist/"
+    "clean": "del ./dist/",
+    "prepublishOnly": "yarn clean && yarn build && agadoo"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,9 @@
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
-    "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-virtual": "^2.0.3",
     "@svgr/rollup": "^5.5.0",
+    "agadoo": "^2.0.0",
     "change-case": "^4.1.2",
     "del-cli": "^3.0.1",
     "glob": "^7.1.6",

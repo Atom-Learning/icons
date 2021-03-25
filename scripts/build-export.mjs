@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/default
-import alias from '@rollup/plugin-alias'
 import changeCase from 'change-case'
 import glob from 'glob'
 import path from 'path'
@@ -8,10 +6,9 @@ import url from 'rollup-plugin-url'
 import virtual from '@rollup/plugin-virtual'
 import { rollup } from 'rollup'
 import bundleSize from 'rollup-plugin-bundle-size'
-// import { terser } from 'rollup-plugin-terser'
+import { terser } from 'rollup-plugin-terser'
 import pkg from '../package.json'
 
-const inputGlob = './node_modules/ikonate/icons/*.svg'
 /**
  *
  * @param name string of SVG name in param case
@@ -20,7 +17,7 @@ const inputGlob = './node_modules/ikonate/icons/*.svg'
 const templateExport = (name) =>
   `export { ReactComponent as ${changeCase.pascalCase(
     name
-  )} } from 'ikonate/icons/${name}.svg'\n`
+  )} } from './node_modules/ikonate/icons/${name}.svg'\n`
 
 /**
  *
@@ -38,16 +35,7 @@ const bundleFiles = async (entry) => {
   const bundle = await rollup({
     input: 'entry',
     external: [...Object.keys(pkg.peerDependencies)],
-    plugins: [
-      bundleSize(),
-      virtual({ entry }),
-      alias({
-        entries: [{ find: 'ikonate', replacement: './node_modules/ikonate' }]
-      }),
-      svgr.default(),
-      url()
-      // terser()
-    ]
+    plugins: [virtual({ entry }), bundleSize(), svgr.default(), url(), terser()]
   })
 
   await bundle.write({
@@ -61,12 +49,13 @@ const bundleFiles = async (entry) => {
 }
 
 const run = async () => {
-  const svgFilePaths = await glob.sync(inputGlob)
-
+  // access all svg file paths from ikonate
+  const svgFilePaths = await glob.sync('./node_modules/ikonate/icons/*.svg')
+  // apply export template to each and combine into single string
   const exportFileContents = svgFilePaths
     .map((filePath) => templateExport(getFileName(filePath)))
     .join('')
-
+  // use that template as the entry for rollup bundle
   bundleFiles(exportFileContents)
 }
 
