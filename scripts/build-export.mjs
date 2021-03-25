@@ -17,8 +17,6 @@ import pkg from '../package.json'
 const templateExport = (name) =>
   `export { ReactComponent as ${changeCase.pascalCase(
     name
-  )}, default as ${changeCase.snakeCase(
-    name
   )} } from './node_modules/ikonate/icons/${name}.svg'\n`
 
 /**
