@@ -1,0 +1,8 @@
+node_modules
+dist
+.cache
+.eslintcache
+yarn-error.log
+coverage
+sandbox/build
+stats.html
