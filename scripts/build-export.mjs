@@ -39,10 +39,10 @@ const bundleFiles = async (entry) => {
   })
 
   await bundle.write({
-    output: {
-      file: pkg.main,
-      format: 'esm'
-    }
+    output: { file: pkg.main, format: 'cjs' }
+  })
+  await bundle.write({
+    output: { file: pkg.module, format: 'esm' }
   })
 
   await bundle.close()
