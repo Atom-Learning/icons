@@ -8,7 +8,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "NODE_ENV=production node --no-warnings --experimental-json-modules ./scripts/build-export.mjs",
+    "build": "NODE_ENV=production node --experimental-json-modules ./scripts/build-export.mjs",
     "clean": "del ./dist/",
     "prepublishOnly": "yarn clean && yarn build && agadoo"
   },

@@ -1,14 +1,14 @@
+import bundleSize from 'rollup-plugin-bundle-size'
 import changeCase from 'change-case'
 import glob from 'glob'
 import path from 'path'
 import svgr from '@svgr/rollup'
 import url from 'rollup-plugin-url'
 import virtual from '@rollup/plugin-virtual'
-import { rollup } from 'rollup'
-import bundleSize from 'rollup-plugin-bundle-size'
+import * as rollup from 'rollup'
 import { terser } from 'rollup-plugin-terser'
-import pkg from '../package.json'
 
+import pkg from '../package.json'
 /**
  *
  * @param name string of SVG name in param case
@@ -16,6 +16,8 @@ import pkg from '../package.json'
  */
 const templateExport = (name) =>
   `export { ReactComponent as ${changeCase.pascalCase(
+    name
+  )}, default as ${changeCase.snakeCase(
     name
   )} } from './node_modules/ikonate/icons/${name}.svg'\n`
 
@@ -32,10 +34,10 @@ const getFileName = (filePath) =>
  * @param entry string contents to bundle
  */
 const bundleFiles = async (entry) => {
-  const bundle = await rollup({
+  const bundle = await rollup.rollup({
     input: 'entry',
     external: [...Object.keys(pkg.peerDependencies)],
-    plugins: [virtual({ entry }), bundleSize(), svgr.default(), url(), terser()]
+    plugins: [bundleSize(), virtual({ entry }), url(), svgr.default(), terser()]
   })
 
   await bundle.write({
