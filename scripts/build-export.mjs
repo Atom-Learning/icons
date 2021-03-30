@@ -9,15 +9,6 @@ import * as rollup from 'rollup'
 import { terser } from 'rollup-plugin-terser'
 
 import pkg from '../package.json'
-/**
- *
- * @param name string of SVG name in param case
- * @returns string of export
- */
-const templateExport = (name) =>
-  `export { ReactComponent as ${changeCase.pascalCase(
-    name
-  )} } from './node_modules/ikonate/icons/${name}.svg'\n`
 
 /**
  *
@@ -27,6 +18,29 @@ const templateExport = (name) =>
 const getFileName = (filePath) =>
   path.basename(filePath, path.extname(filePath))
 
+/**
+ *
+ * @param name string of SVG name in param case
+ * @returns string of export
+ */
+const templateExport = (name, source) =>
+  `export { ReactComponent as ${changeCase.pascalCase(
+    name
+  )} } from '${source}/${name}.svg'\n`
+
+/**
+ *
+ * @param location string path to directory
+ * @returns string of named ES exports
+ */
+const getESExportString = async (source) => {
+  // access all svg file paths from location
+  const filePaths = await glob.sync(`${source}/*.svg`)
+  // apply export template to each and combine into single string
+  return filePaths
+    .map((filePath) => templateExport(getFileName(filePath), source))
+    .join('')
+}
 /**
  *
  * @param entry string contents to bundle
@@ -49,14 +63,12 @@ const bundleFiles = async (entry) => {
 }
 
 const run = async () => {
-  // access all svg file paths from ikonate
-  const svgFilePaths = await glob.sync('./node_modules/ikonate/icons/*.svg')
-  // apply export template to each and combine into single string
-  const exportFileContents = svgFilePaths
-    .map((filePath) => templateExport(getFileName(filePath)))
-    .join('')
-  // use that template as the entry for rollup bundle
-  bundleFiles(exportFileContents)
+  const systemIconsExport = await getESExportString(
+    './node_modules/ikonate/icons'
+  )
+  const customIconsExport = await getESExportString('./src')
+
+  bundleFiles(`${systemIconsExport}\n${customIconsExport}`)
 }
 
 run()
