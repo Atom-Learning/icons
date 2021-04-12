@@ -3,7 +3,6 @@ import changeCase from 'change-case'
 import glob from 'glob'
 import path from 'path'
 import svgr from '@svgr/rollup'
-import url from 'rollup-plugin-url'
 import virtual from '@rollup/plugin-virtual'
 import * as rollup from 'rollup'
 import { terser } from 'rollup-plugin-terser'
@@ -24,7 +23,7 @@ const getFileName = (filePath) =>
  * @returns string of export
  */
 const templateExport = (name, source) =>
-  `export { ReactComponent as ${changeCase.pascalCase(
+  `export { default as ${changeCase.pascalCase(
     name
   )} } from '${source}/${name}.svg'\n`
 
@@ -49,7 +48,12 @@ const bundleFiles = async (entry) => {
   const bundle = await rollup.rollup({
     input: 'entry',
     external: [...Object.keys(pkg.peerDependencies)],
-    plugins: [bundleSize(), virtual({ entry }), url(), svgr.default(), terser()]
+    plugins: [
+      virtual({ entry }),
+      svgr.default({ ref: true }),
+      terser(),
+      bundleSize()
+    ]
   })
 
   await bundle.write({
