@@ -80,7 +80,8 @@
         {
           "pattern": "main",
           "notifyOnFail": true,
-          "notifyOnSuccess": true
+          "notifyOnSuccess": true,
+          "packageName": "@atom-learning/icons"
         }
       ]
     ]
