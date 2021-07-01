@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/Atom-Learning/icons/compare/v1.0.0...v1.0.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* pupils icon snap to grid ([90d8b41](https://github.com/Atom-Learning/icons/commit/90d8b4128ed7ff5d1f41b8c3a585d38cff5abe09))
+* removed hardcoded stroke colour ([20a1bdf](https://github.com/Atom-Learning/icons/commit/20a1bdf77a5f159f0c5d0b5e3827c12b31ef4119))
+
 # 1.0.0 (2021-07-01)
 
 
