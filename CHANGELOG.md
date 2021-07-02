@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/Atom-Learning/icons/compare/v1.0.1...v1.1.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* ensure stroke-width is not stripped from SVG ([ee3c4da](https://github.com/Atom-Learning/icons/commit/ee3c4da664dddc825528034780a69fdf4b94b1a1))
+
+
+### Features
+
+* add social icons ([859dca9](https://github.com/Atom-Learning/icons/commit/859dca9bb6b95af08b56431e4d16caf86da6fb4b))
+
 ## [1.0.1](https://github.com/Atom-Learning/icons/compare/v1.0.0...v1.0.1) (2021-07-01)
 
 
