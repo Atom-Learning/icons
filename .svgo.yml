@@ -40,7 +40,7 @@ plugins:
   - removeUnknownsAndDefaults: true
   - removeUnusedNS: true
   - removeUselessDefs: true
-  - removeUselessStrokeAndFill: true
+  - removeUselessStrokeAndFill: false
   - removeViewBox: true
   - removeXMLNS: false
   - removeXMLProcInst: true
