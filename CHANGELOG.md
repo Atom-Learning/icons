@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Atom-Learning/icons/compare/v1.1.0...v1.2.0) (2021-08-18)
+
+
+### Features
+
+* add galore park icon ([7f2c8f5](https://github.com/Atom-Learning/icons/commit/7f2c8f59bd8d43ae0b424d83f9a990d67c77f791))
+
 # [1.1.0](https://github.com/Atom-Learning/icons/compare/v1.0.1...v1.1.0) (2021-07-02)
 
 
