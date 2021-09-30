@@ -26,19 +26,36 @@ const getFileName = (filePath) =>
 const templateExport = (name, source) =>
   `export { ReactComponent as ${changeCase.pascalCase(
     name
-  )} } from '${source}/${name}.svg'\n`
+  )} } from '${source}'\n`
 
 /**
  *
- * @param location string path to directory
+ * @param source location string path to directory
+ * @returns object of icon paths with icon name as key
+ */
+const getExports = async (source) => {
+  const filePaths = await glob.sync(`${source}/*.svg`)
+
+  return filePaths.reduce(
+    (collection, filePath) => ({
+      ...collection,
+      [getFileName(filePath)]: filePath
+    }),
+    {}
+  )
+}
+
+/**
+ *
+ * @param source location string path to directory
  * @returns string of named ES exports
  */
-const getESExportString = async (source) => {
+const getESExportString = async (icons) => {
   // access all svg file paths from location
-  const filePaths = await glob.sync(`${source}/*.svg`)
+  // const filePaths = await glob.sync(`${source}/*.svg`)
   // apply export template to each and combine into single string
-  return filePaths
-    .map((filePath) => templateExport(getFileName(filePath), source))
+  return Object.entries(icons)
+    .map(([name, path]) => templateExport(name, path))
     .join('')
 }
 /**
@@ -63,12 +80,15 @@ const bundleFiles = async (entry) => {
 }
 
 const run = async () => {
-  const systemIconsExport = await getESExportString(
-    './node_modules/ikonate/icons'
-  )
-  const customIconsExport = await getESExportString('./src')
+  const systemIcons = await getExports('./node_modules/ikonate/icons')
+  const customIcons = await getExports('./src')
 
-  bundleFiles(`${systemIconsExport}\n${customIconsExport}`)
+  const iconsExportTemplate = await getESExportString({
+    ...systemIcons,
+    ...customIcons
+  })
+
+  bundleFiles(iconsExportTemplate)
 }
 
 run()
