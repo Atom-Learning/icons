@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/Atom-Learning/icons/compare/v1.2.0...v1.3.0) (2021-09-30)
+
+
+### Features
+
+* add new list icon ([65cec0b](https://github.com/Atom-Learning/icons/commit/65cec0b1fc2fa88092314514e37e20275e396dcd))
+* allow custom icons to override ikonate ([b5a45f9](https://github.com/Atom-Learning/icons/commit/b5a45f99c4a595601ef4265c1d7e0df5afd763ba))
+* update to check-list, add simple list icon ([5292da2](https://github.com/Atom-Learning/icons/commit/5292da22bddb060daf584661133e540397761f36))
+
 # [1.2.0](https://github.com/Atom-Learning/icons/compare/v1.1.0...v1.2.0) (2021-08-18)
 
 
