@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Atom-Learning/icons/compare/v1.3.0...v1.4.0) (2021-10-05)
+
+
+### Features
+
+* add new icons ([1107c19](https://github.com/Atom-Learning/icons/commit/1107c1974f8780c61afcadbd470b991e95bbe001))
+
 # [1.3.0](https://github.com/Atom-Learning/icons/compare/v1.2.0...v1.3.0) (2021-09-30)
 
 
