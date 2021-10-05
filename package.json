@@ -12,7 +12,8 @@
     "build": "NODE_ENV=production node --experimental-json-modules ./scripts/build-export.mjs",
     "clean": "del ./dist/",
     "test": "yarn clean && yarn build && agadoo",
-    "prepublishOnly": "yarn test"
+    "prepublishOnly": "yarn test",
+    "start:sandbox": "yarn build && vite serve sandbox"
   },
   "repository": {
     "type": "git",
@@ -38,12 +39,15 @@
     "del-cli": "^3.0.1",
     "glob": "^7.1.6",
     "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rollup": "^2.39.0",
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-url": "^3.0.1",
     "semantic-release": "^17.4.2",
-    "semantic-release-slack-bot": "^2.1.1"
+    "semantic-release-slack-bot": "^2.1.1",
+    "vite": "^2.6.2"
   },
   "peerDependencies": {
     "react": "^16.8.0"
