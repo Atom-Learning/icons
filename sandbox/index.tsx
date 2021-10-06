@@ -18,11 +18,12 @@ const App = () => (
           min-width: 16px;
         }
         svg {
+          color: #222;
           fill: none;
           stroke-linecap: round;
           stroke-linejoin: round;
           stroke-width: 2px;
-          stroke: #222;
+          stroke: currentColor;
         }
       `}
     </style>
