@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/Atom-Learning/icons/compare/v1.4.0...v1.4.1) (2021-10-06)
+
+
+### Bug Fixes
+
+* update pupils icon ([766cf61](https://github.com/Atom-Learning/icons/commit/766cf61c3ccb5c821cbd28b8497db5b176438a85))
+
 # [1.4.0](https://github.com/Atom-Learning/icons/compare/v1.3.0...v1.4.0) (2021-10-05)
 
 

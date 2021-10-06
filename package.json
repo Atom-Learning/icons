@@ -2,7 +2,7 @@
   "name": "@atom-learning/icons",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "files": [
     "dist"
