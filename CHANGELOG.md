@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/Atom-Learning/icons/compare/v1.4.1...v1.5.0) (2021-10-06)
+
+
+### Features
+
+* empty commit to trigger release ([ec41a95](https://github.com/Atom-Learning/icons/commit/ec41a9501ff18582b9ab828744defa5764c09633))
+
 ## [1.4.1](https://github.com/Atom-Learning/icons/compare/v1.4.0...v1.4.1) (2021-10-06)
 
 
