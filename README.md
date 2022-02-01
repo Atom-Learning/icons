@@ -29,8 +29,17 @@ const Component = () => (
 
 ## Contributing
 
-Custom SVG icons can be added to `./src` and will automatically be bundled, when adding to the custom icon set you must follow the following guidelines:
+Custom SVG icons can be added to `./src` and will automatically be bundled. When adding to the custom icon set you must follow the following guidelines:
 
-- The `viewBox` must be `0 0 24 24`
-- No `height` or `width` should be set
+- The `viewBox` must be `0 0 24 24` and no `height` or `width` should be set
 - Visually the contents of the icon should work when `stroke-width: 2` and `fill: none` are applied
+
+You can remove all attributes that we default to in our `@atom-learning/components` `Icon` component to save on file size:
+
+  - `fill` (default `fill="none"`)
+  - `stroke` (default `stroke="currentcolor"`)
+  - `stroke-linecap` (default `stroke-linecap="round"`)
+  - `stroke-linejoin` (default `stroke-linejoin="round"`)
+  - `stroke-width` (default `stroke-width="2"`)
+
+However, you may include these if necessary if you need to override these default styles used above, e.g. `fill="currentColor"` and `stroke-width="0"` for a filled path
