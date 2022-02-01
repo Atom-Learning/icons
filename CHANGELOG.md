@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/Atom-Learning/icons/compare/v1.5.0...v1.6.0) (2022-02-01)
+
+
+### Features
+
+* open new window icon ([fddd2f7](https://github.com/Atom-Learning/icons/commit/fddd2f7b4da1965b8da02ae08a57ae906c64c64f))
+
 # [1.5.0](https://github.com/Atom-Learning/icons/compare/v1.4.1...v1.5.0) (2021-10-06)
 
 
