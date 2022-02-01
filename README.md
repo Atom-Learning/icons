@@ -9,7 +9,7 @@ yarn add @atom-learning/icons
 ```
 
 ```jsx
-import { Danger } from '@atom-learning/icons`
+import { Danger } from '@atom-learning/icons'
 
 const Component = () => (
   <Danger />
@@ -19,8 +19,8 @@ const Component = () => (
 To use alongside the `@atom-learning/components` package, you can combine any imported icon with the `Icon` primitive to provide a set of default sizes and props for styling.
 
 ```jsx
-import { Icon } from '@atom-learning/components`
-import { Danger } from '@atom-learning/icons`
+import { Icon } from '@atom-learning/components'
+import { Danger } from '@atom-learning/icons'
 
 const Component = () => (
   <Icon is={Danger} css={{ color: 'red' }} size="lg" />
