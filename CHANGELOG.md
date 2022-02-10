@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/Atom-Learning/icons/compare/v1.7.0...v1.8.0) (2022-02-10)
+
+
+### Features
+
+* added chat crossed icon ([06840df](https://github.com/Atom-Learning/icons/commit/06840df2060f8e446adc5a77a299546bfc6abe56))
+
 # [1.7.0](https://github.com/Atom-Learning/icons/compare/v1.6.0...v1.7.0) (2022-02-10)
 
 
