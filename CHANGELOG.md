@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/Atom-Learning/icons/compare/v1.6.0...v1.7.0) (2022-02-10)
+
+
+### Features
+
+* added new AddLessons icon ([#19](https://github.com/Atom-Learning/icons/issues/19)) ([3fd57f6](https://github.com/Atom-Learning/icons/commit/3fd57f66ee89d74d0edea4f8f1e4060eb096d2d1))
+
 # [1.6.0](https://github.com/Atom-Learning/icons/compare/v1.5.0...v1.6.0) (2022-02-01)
 
 
