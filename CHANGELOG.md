@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/Atom-Learning/icons/compare/v1.8.0...v1.9.0) (2022-05-24)
+
+
+### Features
+
+* add new icon - Shop ([faef371](https://github.com/Atom-Learning/icons/commit/faef371430a8bc1d2be30c459329d275856802a8))
+
 # [1.8.0](https://github.com/Atom-Learning/icons/compare/v1.7.0...v1.8.0) (2022-02-10)
 
 
