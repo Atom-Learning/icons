@@ -8,6 +8,29 @@ import { transformSync } from 'esbuild'
 const DIRECTORY_SOURCE = './src'
 const DIRECTORY_OUTPUT = './dist'
 
+const optimisedComponentTemplate = (
+  { props, imports, componentName, jsx },
+  { tpl }
+) => tpl`${imports};export const ${componentName} = (${props}) => ${jsx}`
+
+const svgoConfig = {
+  multipass: true,
+  plugins: [
+    {
+      name: 'preset-default',
+      params: {
+        overrides: {
+          removeViewBox: false,
+          removeUselessStrokeAndFill: false
+        }
+      }
+    },
+    { name: 'removeAttrs', params: { attrs: 'aria-labelledby' } },
+    { name: 'removeDimensions' },
+    { name: 'removeTitle' }
+  ]
+}
+
 const exists = async (path: string) => {
   try {
     await fs.access(path)
@@ -22,10 +45,7 @@ const createESExportString = async (icons: Record<string, string>) => {
   // const filePaths = await glob.sync(`${source}/*.svg`)
   // apply export template to each and combine into single string
   return Object.entries(icons)
-    .map(([name]) => {
-      const component = changeCase.pascalCase(name)
-      return `export { default as ${component} } from './${name}'\n`
-    })
+    .map(([name]) => `export * from './${name}'\n`)
     .join('')
 }
 
@@ -51,26 +71,8 @@ const transformIcon = async (name: string, source: string) => {
       svgSource,
       {
         plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
-        svgoConfig: {
-          multipass: true,
-          plugins: [
-            {
-              name: 'preset-default',
-              params: {
-                overrides: {
-                  removeViewBox: false,
-                  removeUselessStrokeAndFill: false
-                }
-              }
-            },
-            {
-              name: 'removeAttrs',
-              params: { attrs: 'aria-labelledby' }
-            },
-            { name: 'removeDimensions' },
-            { name: 'removeTitle' }
-          ]
-        }
+        svgoConfig,
+        template: optimisedComponentTemplate
       },
       { componentName: changeCase.pascalCase(name) }
     )
@@ -89,21 +91,21 @@ const run = async () => {
   const customIcons = await getIconExports(DIRECTORY_SOURCE)
   const icons = { ...systemIcons, ...customIcons }
 
-  const mainExportTemplate = await createESExportString(icons)
-
-  Object.entries(icons).map(async ([name, source]) => {
-    const { code } = await transformIcon(name, source)
-    await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, `${name}.js`), code)
-  })
-
   const dirOutputExists = await exists(DIRECTORY_OUTPUT)
 
   if (!dirOutputExists) {
     await fs.mkdir(DIRECTORY_OUTPUT)
   }
 
+  Object.entries(icons).map(async ([name, source]) => {
+    const { code } = await transformIcon(name, source)
+    await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, `${name}.js`), code)
+  })
+
+  const mainExportTemplate = await createESExportString(icons)
+
   await fs.writeFile(
-    path.join(DIRECTORY_OUTPUT, 'index.js'),
+    path.resolve(DIRECTORY_OUTPUT, 'index.js'),
     mainExportTemplate
   )
 }
