@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import * as Icons from '../dist/index.modern'
+import * as Icons from '../dist'
 
 const App = () => (
   <>
