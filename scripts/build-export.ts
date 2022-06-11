@@ -115,10 +115,10 @@ const run = async () => {
 
   await outputESEntry(icons)
 
-  Object.entries(icons).map(async ([name, source]) => {
+  for (const [name, source] of Object.entries(icons)) {
     const { code } = await transformIcon(name, source)
     await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, `${name}.js`), code)
-  })
+  }
 
   await outputCJSBundle()
 }
