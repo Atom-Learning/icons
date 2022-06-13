@@ -3,7 +3,7 @@ import fs from 'fs/promises'
 import glob from 'glob'
 import path from 'path'
 import { transform } from '@svgr/core'
-import { transformSync } from 'esbuild'
+import { buildSync, transformSync } from 'esbuild'
 
 const DIRECTORY_SOURCE = './src'
 const DIRECTORY_OUTPUT = './dist'
@@ -38,6 +38,22 @@ const exists = async (path: string) => {
   } catch {
     return false
   }
+}
+
+const outputESEntry = async (icons) => {
+  const template = await createESExportString(icons)
+  await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, 'index.js'), template)
+}
+
+const outputCJSBundle = async () => {
+  await buildSync({
+    entryPoints: [path.resolve(DIRECTORY_OUTPUT, 'index.js')],
+    outfile: path.resolve(DIRECTORY_OUTPUT, 'index.cjs.js'),
+    format: 'cjs',
+    bundle: true,
+    external: ['react'],
+    minify: true
+  })
 }
 
 const createESExportString = async (icons: Record<string, string>) => {
@@ -97,17 +113,14 @@ const run = async () => {
     await fs.mkdir(DIRECTORY_OUTPUT)
   }
 
-  Object.entries(icons).map(async ([name, source]) => {
+  await outputESEntry(icons)
+
+  for (const [name, source] of Object.entries(icons)) {
     const { code } = await transformIcon(name, source)
     await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, `${name}.js`), code)
-  })
+  }
 
-  const mainExportTemplate = await createESExportString(icons)
-
-  await fs.writeFile(
-    path.resolve(DIRECTORY_OUTPUT, 'index.js'),
-    mainExportTemplate
-  )
+  await outputCJSBundle()
 }
 
 run()
