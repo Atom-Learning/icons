@@ -21,7 +21,8 @@ const svgoConfig = {
       params: {
         overrides: {
           removeViewBox: false,
-          removeUselessStrokeAndFill: false
+          removeUselessStrokeAndFill: false,
+          convertShapeToPath: false
         }
       }
     },
