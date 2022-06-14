@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/Atom-Learning/icons/compare/v1.10.0...v1.10.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* ensure all necessary elements are included in icon ([e15b9a2](https://github.com/Atom-Learning/icons/commit/e15b9a217670d1779d1ea474f4c88e267fca2e01))
+
 # [1.9.0](https://github.com/Atom-Learning/icons/compare/v1.8.0...v1.9.0) (2022-05-24)
 
 
