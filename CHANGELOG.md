@@ -1,3 +1,18 @@
+# [1.11.0](https://github.com/Atom-Learning/icons/compare/v1.10.1...v1.11.0) (2022-06-29)
+
+
+### Bug Fixes
+
+* minor tweaks to SVG attributes ([1f954bf](https://github.com/Atom-Learning/icons/commit/1f954bf13f244a09495e55288b9b8f8a53a0a9d7))
+* update icons with correct versions ([6e5e2a0](https://github.com/Atom-Learning/icons/commit/6e5e2a0f245095f85e18f8b71de15944432e466d))
+* v3 of icons, no fill and stroke-width:2 ([66d2d36](https://github.com/Atom-Learning/icons/commit/66d2d36fddc9b8334538533a2a974ed0e2bf32bd))
+
+
+### Features
+
+* add school icon ([dcb32cb](https://github.com/Atom-Learning/icons/commit/dcb32cbc5bf65926ae4e117bf2a521c43561f1e3))
+* add teacher icon ([32a4c05](https://github.com/Atom-Learning/icons/commit/32a4c05de7bf07d4c3bc1a61552c5e413eb36e18))
+
 ## [1.10.1](https://github.com/Atom-Learning/icons/compare/v1.10.0...v1.10.1) (2022-06-14)
 
 
