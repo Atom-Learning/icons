@@ -5,7 +5,8 @@ import path from 'path'
 import { transform } from '@svgr/core'
 import { buildSync, transformSync } from 'esbuild'
 
-const DIRECTORY_SOURCE = './src'
+const DIRECTORY_SOURCE_SYSTEM = './src/ikonate'
+const DIRECTORY_SOURCE_CUSTOM = './src/custom'
 const DIRECTORY_OUTPUT = './dist'
 
 const optimisedComponentTemplate = (
@@ -104,8 +105,8 @@ const transformIcon = async (name: string, source: string) => {
 }
 
 const run = async () => {
-  const systemIcons = await getIconExports('./node_modules/ikonate/icons')
-  const customIcons = await getIconExports(DIRECTORY_SOURCE)
+  const systemIcons = await getIconExports(DIRECTORY_SOURCE_SYSTEM)
+  const customIcons = await getIconExports(DIRECTORY_SOURCE_CUSTOM)
   const icons = { ...systemIcons, ...customIcons }
 
   const dirOutputExists = await exists(DIRECTORY_OUTPUT)
