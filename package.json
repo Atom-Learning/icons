@@ -2,7 +2,7 @@
   "name": "@atom-learning/icons",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "version": "1.12.0",
+  "version": "1.14.0",
   "description": "",
   "files": [
     "dist"
