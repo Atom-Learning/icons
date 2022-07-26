@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/Atom-Learning/icons/compare/v1.11.0...v1.12.0) (2022-07-26)
+
+
+### Features
+
+* DragHandle ([0f23c3a](https://github.com/Atom-Learning/icons/commit/0f23c3ad32f05936b7c7eb7b5c3cd0c41599789b))
+
 # [1.11.0](https://github.com/Atom-Learning/icons/compare/v1.10.1...v1.11.0) (2022-06-29)
 
 
