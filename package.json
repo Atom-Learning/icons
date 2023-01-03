@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsm ./scripts/build-export.ts",
     "clean": "del ./dist/",
-    "test": "yarn clean && yarn build && agadoo",
+    "test": "yarn clean && yarn build",
     "prepublishOnly": "yarn test",
     "start:sandbox": "yarn build && vite serve sandbox"
   },
@@ -35,7 +35,6 @@
     "@svgr/core": "^6.2.1",
     "@svgr/plugin-jsx": "^6.2.1",
     "@svgr/plugin-svgo": "^6.2.0",
-    "agadoo": "^2.0.0",
     "change-case": "^4.1.2",
     "del-cli": "^3.0.1",
     "esbuild": "^0.14.42",
