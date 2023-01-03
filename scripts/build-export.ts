@@ -12,7 +12,8 @@ const DIRECTORY_OUTPUT = './dist'
 const optimisedComponentTemplate = (
   { props, imports, componentName, jsx },
   { tpl }
-) => tpl`${imports};export const ${componentName} = (${props}) => ${jsx}`
+) =>
+  tpl`${imports};export const ${componentName} = React.forwardRef(${props} => ${jsx})`
 
 const svgoConfig = {
   multipass: true,
@@ -90,7 +91,8 @@ const transformIcon = async (name: string, source: string) => {
       {
         plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
         svgoConfig,
-        template: optimisedComponentTemplate
+        template: optimisedComponentTemplate,
+        ref: true
       },
       { componentName: changeCase.pascalCase(name) }
     )
