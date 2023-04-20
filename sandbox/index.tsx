@@ -15,23 +15,35 @@ const App = () => (
         }
         .container > * {
           flex: 0 0 4%;
-          min-width: 16px;
         }
         svg {
           color: #222;
           fill: none;
           stroke-linecap: round;
           stroke-linejoin: round;
-          stroke-width: 2px;
           stroke: currentColor;
+        }
+        .icon-sm svg{
+          stroke-width: 1.5px;
+          width: 16px;
+        }
+        .icon-md svg {
+          stroke-width: 1.75px;
+          width: 24px;
+        }
+        .icon-lg svg {
+          stroke-width: 2px;
+          width: 32px;
         }
       `}
     </style>
     <div className="container">
       {Object.entries(Icons).map(([name, Icon]) => (
-        <div>
-          <Icon key={name} />
-        </div>
+        ['sm', 'md', 'lg'].map(size => (
+          <div className={`icon-${size}`}>
+            <Icon size={size} key={`${name}-${size}`} />
+          </div>
+        ))
       ))}
     </div>
   </>
