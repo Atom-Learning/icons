@@ -61,6 +61,19 @@ const outputESEntry = async (icons) => {
   await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, 'index.js'), template)
 }
 
+const outputTypeDeclarations = async (icons: Record<string, string>) => {
+  for (const [name] of Object.entries(icons)) {
+    const componentName = changeCase.pascalCase(name)
+    const declaration = `import { FC, SVGProps } from 'react';\nexport declare const ${componentName}: FC<SVGProps<SVGSVGElement>>;\n`
+    await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, `${name}.d.ts`), declaration)
+  }
+
+  const indexDeclaration = Object.entries(icons)
+    .map(([name]) => `export * from './${name}';\n`)
+    .join('')
+  await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, 'index.d.ts'), indexDeclaration)
+}
+
 const outputCJSBundle = async () => {
   await buildSync({
     entryPoints: [path.resolve(DIRECTORY_OUTPUT, 'index.js')],
@@ -137,6 +150,7 @@ const run = async () => {
     await fs.writeFile(path.resolve(DIRECTORY_OUTPUT, `${name}.js`), code)
   }
 
+  await outputTypeDeclarations(icons)
   await outputCJSBundle()
 }
 
