@@ -1,10 +1,19 @@
 {
   "name": "@atom-learning/icons",
-  "main": "dist/index.cjs.js",
+  "type": "module",
+  "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "version": "1.22.0",
+  "version": "1.23.0",
   "description": "",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
@@ -12,7 +21,8 @@
   "scripts": {
     "build": "tsm ./scripts/build-export.ts",
     "clean": "del ./dist/",
-    "test": "yarn clean && yarn build",
+    "test": "yarn clean && yarn build && yarn test:ssr",
+    "test:ssr": "node --test scripts/ssr.test.mjs scripts/ssr.test.cjs",
     "prepublishOnly": "yarn test",
     "start:sandbox": "yarn build && vite serve sandbox"
   },

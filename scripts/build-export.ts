@@ -77,7 +77,7 @@ const outputTypeDeclarations = async (icons: Record<string, string>) => {
 const outputCJSBundle = async () => {
   await buildSync({
     entryPoints: [path.resolve(DIRECTORY_OUTPUT, 'index.js')],
-    outfile: path.resolve(DIRECTORY_OUTPUT, 'index.cjs.js'),
+    outfile: path.resolve(DIRECTORY_OUTPUT, 'index.cjs'),
     format: 'cjs',
     bundle: true,
     external: ['react'],
@@ -90,7 +90,7 @@ const createESExportString = async (icons: Record<string, string>) => {
   // const filePaths = await glob.sync(`${source}/*.svg`)
   // apply export template to each and combine into single string
   return Object.entries(icons)
-    .map(([name]) => `export * from './${name}'\n`)
+    .map(([name]) => `export * from './${name}.js'\n`)
     .join('')
 }
 
